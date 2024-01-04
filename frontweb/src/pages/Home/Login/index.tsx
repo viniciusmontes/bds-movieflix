@@ -1,6 +1,12 @@
 import ButtonIcon from "components/ButtonIcon";
-import "./styles.css";
 import { useForm } from "react-hook-form";
+import { requestBackendLogin } from "util/requests";
+import { saveAuthData } from "util/storage";
+import { getTokenData } from "util/auth";
+import { useContext } from "react";
+import { AuthContext } from "AuthContext";
+
+import "./styles.css";
 
 type FormData = {
   username: string;
@@ -8,10 +14,22 @@ type FormData = {
 };
 
 const Login = () => {
+  const { setAuthContextData } = useContext(AuthContext);
+
   const { register, handleSubmit } = useForm<FormData>();
 
   const onSubmit = (formData: FormData) => {
-    console.log(formData);
+    requestBackendLogin(formData)
+      .then((response) => {
+        saveAuthData(response.data);
+        setAuthContextData({
+          authenticated: true,
+          tokenData: getTokenData(),
+        });
+      })
+      .catch(() => {
+        console.log("erro");
+      });
   };
 
   return (
@@ -20,7 +38,7 @@ const Login = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-4">
           <input
-          {...register("username")}
+            {...register("username")}
             type="text"
             className="form-control base-input"
             placeholder="Email"
@@ -29,7 +47,7 @@ const Login = () => {
         </div>
         <div className="mb-2">
           <input
-          {...register("password")}
+            {...register("password")}
             type="password"
             className="form-control base-input "
             placeholder="Password"
