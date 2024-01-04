@@ -1,9 +1,9 @@
-import 'assets/styles/custom.scss'
-import './App.css';
+import "assets/styles/custom.scss";
+import Routes from "./Routes";
+
+import "./App.css";
 
 const App = () => {
-  return (
-    <h1 className='bg-primary'>MovieFLix</h1>
-  )
-}
+  return <Routes />;
+};
 export default App;
