@@ -1,9 +1,7 @@
-import { ReactComponent as HomeImage } from "assets/images/home-image.svg";
-import Login from "./Login";
+import { ReactComponent as HomeImage } from 'assets/images/home-image.svg';
+import Login from './Login';
 
-import "./styles.css";
-
-
+import './styles.css';
 
 const Auth = () => {
   return (
@@ -16,7 +14,7 @@ const Auth = () => {
         </div>
 
         <div className="auth-form-container base-card">
-          <Login/>
+          <Login />
         </div>
       </div>
     </>

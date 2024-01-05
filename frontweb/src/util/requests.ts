@@ -23,13 +23,13 @@ export const requestBackendLogin = (loginData: LoginData) => {
 
   const data = qs.stringify({
     ...loginData,
-    grant_type: "password",
+    grant_type:"password",
   });
 
   return axios({
     method: "POST",
     baseURL: BASE_URL,
-    url: "/ouath/token",
+    url: "/oauth/token",
     data,
     headers,
   });
