@@ -1,7 +1,7 @@
 import { jwtDecode } from "jwt-decode";
 import { getAuthData } from "./storage";
 
-export type Role = "VISITOR" | "MEMBER";
+export type Role = "ROLE_VISITOR" | "ROLE_MEMBER";
 
 export type TokenData = {
   exp: number;
@@ -17,9 +17,9 @@ export const getTokenData = (): TokenData | undefined => {
   }
 };
 
-export const isAuthenticated = (): boolean => {
+export const isAuthenticated = () : boolean => {
   const tokenData = getTokenData();
-  return tokenData && tokenData.exp * 100 > Date.now() ? true : false;
+  return tokenData && tokenData.exp * 1000 > Date.now() ? true : false;
 };
 
 export const hasAnyRoles = (roles: Role[]): boolean => {

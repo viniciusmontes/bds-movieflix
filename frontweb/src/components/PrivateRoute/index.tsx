@@ -6,15 +6,20 @@ type Props = {
   path: string;
 };
 
-const PrivateRoute = ({ children, path }: Props) => {
+const PrivateRoute = ({children, path}: Props) => {
   return (
     <Route
       path={path}
       render={({ location }) =>
         !isAuthenticated() ? (
-          <Redirect to={{ pathname: "/", state: { from: location } }} />
+          <Redirect
+           to={{
+          pathname: "/", 
+          state: { from: location },
+        }}
+           />
         ) : (
-          <>{children}</>
+          children
         )
       }
     />
