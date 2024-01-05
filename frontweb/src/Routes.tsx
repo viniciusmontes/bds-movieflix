@@ -1,5 +1,6 @@
 import { Route, Router, Switch } from "react-router-dom";
 import Navbar from "components/Navbar";
+import history from 'history';
 import Home from "pages/Home";
 import MovieCatalog from "pages/Private/MovieCatalog";
 import MovieDetails from "pages/Private/MovieDetails";
