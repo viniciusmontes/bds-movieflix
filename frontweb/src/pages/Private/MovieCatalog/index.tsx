@@ -1,4 +1,6 @@
-import "./styles.css";
+import { Link } from 'react-router-dom';
+
+import './styles.css';
 
 const MovieCatalog = () => {
   return (
@@ -6,8 +8,10 @@ const MovieCatalog = () => {
       <div className="movie-catalog-container">
         <div className="movie-catalog-content">
           <h1>Tela de listagem de filmes</h1>
-          <a href="/">Acessar /movies/1<br></br></a>
-          <a href="/">Acessar /movies/2</a>
+          <Link to="/movies/1">
+            Acessar /movies/1<br></br>
+          </Link>
+          <Link to="/movies/2">Acessar /movies/2</Link>
         </div>
       </div>
     </>
